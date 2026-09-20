@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cyber Challenge</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #e8f1ff;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(0, 180, 255, 0.08),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(0, 255, 170, 0.06),
+            transparent 30%
+        ),
+        #05080d;
+
+    overflow-x: hidden;
+}
+
+
+/* =====================================
+   BACKGROUND GRID
+===================================== */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.15;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px
+        );
+
+    background-size: 40px 40px;
+}
+
+
+/* =====================================
+   SCREEN SYSTEM
+===================================== */
+
+.screen {
+    display: none;
+
+    min-height: 100vh;
+    padding: 40px 20px;
+
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    z-index: 2;
+}
+
+.screen.active {
+    display: flex;
+}
+
+
+/* =====================================
+   SCREEN 1 — EMAIL
+===================================== */
+
+.email-window {
+    width: min(850px, 100%);
+
+    background: #10161f;
+
+    border: 1px solid rgba(130, 180, 230, 0.2);
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.5),
+        0 0 40px rgba(0,150,255,0.04);
+}
+
+
+.window-bar {
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 18px;
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+
+    background: #0c1118;
+}
+
+
+.window-dots {
+    display: flex;
+    gap: 7px;
+}
+
+
+.window-dots span {
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #3d4652;
+}
+
+
+.email-header {
+    padding: 25px 30px 20px;
+
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+
+.email-brand {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 22px;
+}
+
+
+.ms-logo {
+    width: 30px;
+    height: 30px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    gap: 2px;
+}
+
+
+.ms-logo span:nth-child(1) {
+    background: #f25022;
+}
+
+.ms-logo span:nth-child(2) {
+    background: #7fba00;
+}
+
+.ms-logo span:nth-child(3) {
+    background: #00a4ef;
+}
+
+.ms-logo span:nth-child(4) {
+    background: #ffb900;
+}
+
+
+.brand-name {
+    font-size: 18px;
+
+    font-weight: 600;
+
+    color: #f1f5fa;
+}
+
+
+.email-meta {
+    font-size: 13px;
+
+    line-height: 1.9;
+
+    color: #9ba8b8;
+}
+
+
+.email-meta strong {
+    color: #dbe5f0;
+
+    font-weight: 500;
+
+    display: inline-block;
+
+    width: 65px;
+}
+
+
+.email-body {
+    padding: 32px 30px 35px;
+}
+
+
+.email-body p {
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    color: #c8d2de;
+
+    margin-bottom: 18px;
+}
+
+
+.signin-box {
+    margin: 24px 0;
+
+    padding: 20px;
+
+    background: #0b1017;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 8px;
+}
+
+
+.signin-title {
+    font-size: 12px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1.5px;
+
+    color: #718096;
+
+    margin-bottom: 10px;
+}
+
+
+.signin-details {
+    color: #cbd6e3;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+.verify-button {
+    border: none;
+
+    padding: 13px 25px;
+
+    border-radius: 6px;
+
+    background: #0879d1;
+
+    color: #fff;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.verify-button:hover {
+    background: #0b8be9;
+
+    transform: translateY(-1px);
+}
+
+
+.email-signature {
+    margin-top: 25px;
+
+    color: #8794a4;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* =====================================
+   SCREEN 2 — COLOR PUZZLE
+===================================== */
+
+.challenge-card {
+    width: min(900px, 100%);
+
+    padding: 45px;
+
+    background: rgba(12,18,27,0.96);
+
+    border: 1px solid rgba(110,170,220,0.2);
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.5);
+}
+
+
+.challenge-message {
+    font-size: 20px;
+
+    line-height: 1.6;
+
+    text-align: center;
+
+    color: #e6eff9;
+
+    margin-bottom: 35px;
+}
+
+
+.hex-grid {
+    display: grid;
+
+    grid-template-columns: repeat(5,1fr);
+
+    gap: 12px;
+
+    margin-bottom: 30px;
+}
+
+
+/* =====================================
+   COLOR BOX — UNSELECTED
+===================================== */
+
+.hex-box {
+    padding: 16px 8px;
+
+    background: #0a1017;
+
+    border: 1px solid rgba(150,180,210,0.18);
+
+    border-radius: 7px;
+
+    color: #aebdcd;
+
+    text-align: center;
+
+    font-family: monospace;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease,
+        box-shadow 0.15s ease,
+        transform 0.15s ease;
+
+    user-select: none;
+}
+
+
+.hex-box:hover {
+    border-color: rgba(0,170,255,0.6);
+
+    background: #101923;
+}
+
+
+/* =====================================
+   COLOR BOX — SELECTED
+===================================== */
+
+.hex-box.selected {
+    background: #00a4ef;
+
+    border-color: #00a4ef;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 0 18px rgba(0,164,239,0.45);
+
+    transform: translateY(-1px);
+}
+
+
+.hex-box.selected:hover {
+    background: #00a4ef;
+
+    border-color: #00a4ef;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 0 20px rgba(0,164,239,0.55);
+}
+
+
+/* =====================================
+   BUTTONS
+===================================== */
+
+.action-row {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+
+.submit-button,
+.previous-button {
+    padding: 12px 22px;
+
+    border-radius: 6px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.submit-button {
+    border: none;
+
+    background: #0b8de3;
+
+    color: #fff;
+}
+
+
+.submit-button:hover {
+    background: #12a0fa;
+}
+
+
+.previous-button {
+    border: 1px solid rgba(150,180,210,0.2);
+
+    background: transparent;
+
+    color: #aebdcd;
+}
+
+
+.previous-button:hover {
+    border-color: rgba(150,180,210,0.5);
+
+    color: #fff;
+}
+
+
+/* =====================================
+   WRONG ANSWER
+===================================== */
+
+.wrong-message {
+    display: none;
+
+    margin-top: 20px;
+
+    padding: 13px 16px;
+
+    text-align: center;
+
+    border: 1px solid rgba(255,80,80,0.3);
+
+    border-radius: 6px;
+
+    background: rgba(255,50,50,0.06);
+
+    color: #ff9d9d;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+.wrong-message.show {
+    display: block;
+}
+
+
+/* =====================================
+   SCREEN 3 — SUCCESS
+===================================== */
+
+.success-card {
+    width: min(700px,100%);
+
+    padding: 50px 45px;
+
+    text-align: center;
+
+    background: rgba(10,16,24,0.97);
+
+    border: 1px solid rgba(100,255,180,0.2);
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.5),
+        0 0 50px rgba(0,255,160,0.03);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+.success-line {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+
+    background: #5dffad;
+
+    box-shadow:
+        0 0 20px #5dffad;
+}
+
+
+.success-icon {
+    width: 58px;
+    height: 58px;
+
+    margin: 0 auto 22px;
+
+    border: 1px solid rgba(93,255,173,0.5);
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #5dffad;
+
+    font-size: 28px;
+
+    box-shadow:
+        0 0 25px rgba(93,255,173,0.08);
+}
+
+
+.success-card h1 {
+    font-size: 34px;
+
+    font-weight: 600;
+
+    margin-bottom: 15px;
+
+    color: #f1f7ff;
+}
+
+
+.success-text {
+    max-width: 520px;
+
+    margin: 0 auto 30px;
+
+    color: #aebbc9;
+
+    line-height: 1.7;
+
+    font-size: 15px;
+}
+
+
+.clue-box {
+    padding: 25px;
+
+    text-align: left;
+
+    background: #080d13;
+
+    border: 1px solid rgba(255,255,255,0.09);
+
+    border-radius: 9px;
+
+    margin-bottom: 25px;
+}
+
+
+.clue-label {
+    font-family: monospace;
+
+    color: #5dffad;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 12px;
+}
+
+
+.url-box {
+    width: 100%;
+
+    padding: 15px;
+
+    background: #05090e;
+
+    border: 1px solid rgba(100,170,220,0.2);
+
+    border-radius: 6px;
+
+    color: #8ed7ff;
+
+    font-family: monospace;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    word-break: break-all;
+
+    user-select: text;
+
+    cursor: text;
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width:700px) {
+
+    .screen {
+        padding: 25px 12px;
+    }
+
+    .email-header,
+    .email-body {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .challenge-card,
+    .success-card {
+        padding: 30px 20px;
+    }
+
+    .hex-grid {
+        grid-template-columns: repeat(3,1fr);
+
+        gap: 9px;
+    }
+
+    .hex-box {
+        padding: 13px 5px;
+
+        font-size: 11px;
+    }
+
+    .challenge-message {
+        font-size: 17px;
+    }
+
+    .success-card h1 {
+        font-size: 28px;
+    }
+
+    .url-box {
+        font-size: 11px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+     SCREEN 1 — SIMULATED EMAIL
+===================================== -->
+
+<section id="screen1" class="screen active">
+
+    <div class="email-window">
+
+        <div class="window-bar">
+
+            <div class="window-dots">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+        </div>
+
+
+        <div class="email-header">
+
+            <div class="email-brand">
+
+                <div class="ms-logo">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+                <div class="brand-name">
+                    Microsoft 365
+                </div>
+
+            </div>
+
+
+            <div class="email-meta">
+
+                <div>
+                    <strong>From:</strong>
+                    account-security@micros0ft.com
+                </div>
+
+                <div>
+                    <strong>To:</strong>
+                    5593833@bkbck.edu.in
+                </div>
+
+                <div>
+                    <strong>Date:</strong>
+                    18 Sep 2026, 10:42 AM
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="email-body">
+
+            <p>Hello,</p>
+
+            <p>
+                We detected an unusual sign-in to your Microsoft 365 account.
+            </p>
+
+
+            <div class="signin-box">
+
+                <div class="signin-title">
+                    Sign-in details
+                </div>
+
+                <div class="signin-details">
+
+                    Date: 18 Sep 2026<br>
+                    Location: Mumbai, India<br>
+                    Device: Windows PC<br>
+                    Browser: Microsoft Edge
+
+                </div>
+
+            </div>
+
+
+            <p>
+                If you recognize this sign-in, no further action is required.
+            </p>
+
+
+            <p>
+                If you do not recognize this activity, please verify your
+                account to secure your access.
+            </p>
+
+
+            <button
+                class="verify-button"
+                onclick="showClue()"
+            >
+                Verify My Account
+            </button>
+
+
+            <div class="email-signature">
+
+                Regards,<br>
+                Account Security Team
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+     SCREEN 2 — COLOR PUZZLE
+===================================== -->
+
+<section id="screen2" class="screen">
+
+    <div class="challenge-card">
+
+        <div class="challenge-message">
+
+            Your next clue of Treasure Hunt is hidden in the email.<br>
+            Read the email carefully and find the mistake.
+
+        </div>
+
+
+        <div
+            id="hexGrid"
+            class="hex-grid"
+        ></div>
+
+
+        <div class="action-row">
+
+            <button
+                class="submit-button"
+                onclick="submitAnswer()"
+            >
+                SUBMIT ANSWER
+            </button>
+
+
+            <button
+                class="previous-button"
+                onclick="showEmail()"
+            >
+                ← Previous
+            </button>
+
+        </div>
+
+
+        <div
+            id="wrongMessage"
+            class="wrong-message"
+        >
+            Wrong Answer. Read the email carefully and try again.
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+     SCREEN 3 — SUCCESS
+===================================== -->
+
+<section id="screen3" class="screen">
+
+    <div class="success-card">
+
+        <div class="success-line"></div>
+
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+
+        <h1>
+            Congratulations!
+        </h1>
+
+
+        <p class="success-text">
+
+            You have successfully completed the first challenge
+            of the Treasure Hunt. Your next clue is now unlocked.
+
+        </p>
+
+
+        <div class="clue-box">
+
+            <div class="clue-label">
+                CLUE 02
+            </div>
+
+
+            <div class="url-box">
+
+                https://youtu.be/ZI81LpIfMTk?si=_ZlFx9G6nEdGSSYx
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="previous-button"
+            onclick="showClue()"
+        >
+            ← Previous
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<script>
+
+
+/* =====================================
+   COLOR POOL
+===================================== */
+
+const colorPool = [
+
+    "#F25022",
+    "#7FBA00",
+    "#00A4EF",
+    "#FFB900",
+
+    "#E63946",
+    "#2A9D8F",
+    "#264653",
+    "#E9C46A",
+    "#F4A261",
+
+    "#6A4C93",
+    "#1982C4",
+    "#8AC926",
+    "#FF595E",
+    "#FFCA3A",
+
+    "#8338EC",
+    "#3A86FF",
+    "#06D6A0",
+    "#118AB2",
+    "#EF476F",
+
+    "#073B4C",
+    "#7209B7",
+    "#F72585",
+    "#4895EF",
+    "#4CC9F0",
+
+    "#4361EE",
+    "#3F37C9",
+    "#480CA8",
+    "#560BAD",
+    "#B5179E",
+
+    "#0096C7"
+
+];
+
+
+/* =====================================
+   SHA-256 VERIFICATION HASH
+===================================== */
+
+/*
+   The selected values are:
+
+   sorted alphabetically
+   ↓
+
+   #00A4EF
+   #7FBA00
+   #F25022
+   #FFB900
+
+   joined with "|"
+
+   The resulting SHA-256 hash is:
+
+   b525bb60476dc38e38804b1a9969ec67dc9af7a905a9942a6995a98eac8b4cef
+*/
+
+const verificationHash =
+    "b525bb60476dc38e38804b1a9969ec67dc9af7a905a9942a6995a98eac8b4cef";
+
+
+let selectedColors = new Set();
+
+
+
+/* =====================================
+   SCREEN CONTROL
+===================================== */
+
+function hideAllScreens() {
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(screen => {
+
+            screen.classList.remove("active");
+
+        });
+
+}
+
+
+function showEmail() {
+
+    hideAllScreens();
+
+    document
+        .getElementById("screen1")
+        .classList.add("active");
+
+}
+
+
+function showClue() {
+
+    hideAllScreens();
+
+    document
+        .getElementById("screen2")
+        .classList.add("active");
+
+    createHexGrid();
+
+}
+
+
+function showSuccess() {
+
+    hideAllScreens();
+
+    document
+        .getElementById("screen3")
+        .classList.add("active");
+
+}
+
+
+
+/* =====================================
+   SHUFFLE COLORS
+===================================== */
+
+function shuffle(array) {
+
+    const arr = [...array];
+
+    for (
+        let i = arr.length - 1;
+        i > 0;
+        i--
+    ) {
+
+        const j =
+            Math.floor(
+                Math.random() * (i + 1)
+            );
+
+        [
+            arr[i],
+            arr[j]
+        ] = [
+            arr[j],
+            arr[i]
+        ];
+
+    }
+
+    return arr;
+
+}
+
+
+
+/* =====================================
+   CREATE COLOR GRID
+===================================== */
+
+function createHexGrid() {
+
+    const grid =
+        document.getElementById("hexGrid");
+
+    grid.innerHTML = "";
+
+    selectedColors.clear();
+
+
+    document
+        .getElementById("wrongMessage")
+        .classList.remove("show");
+
+
+    const shuffledColors =
+        shuffle(colorPool);
+
+
+    shuffledColors.forEach(color => {
+
+        const box =
+            document.createElement("div");
+
+
+        box.className = "hex-box";
+
+
+        box.textContent = color;
+
+
+        box.dataset.color = color;
+
+
+        box.onclick = function() {
+
+            selectBox(box, color);
+
+        };
+
+
+        grid.appendChild(box);
+
+    });
+
+}
+
+
+
+/* =====================================
+   SELECT / DESELECT
+===================================== */
+
+function selectBox(box, color) {
+
+    if (selectedColors.has(color)) {
+
+        /*
+         * Already selected:
+         * remove selection.
+         */
+
+        selectedColors.delete(color);
+
+        box.classList.remove("selected");
+
+    }
+
+    else {
+
+        /*
+         * Not selected:
+         * add selection.
+         *
+         * There is intentionally
+         * NO selection limit.
+         */
+
+        selectedColors.add(color);
+
+        box.classList.add("selected");
+
+    }
+
+}
+
+
+
+/* =====================================
+   SHA-256 FUNCTION
+===================================== */
+
+async function sha256(text) {
+
+    const encoder =
+        new TextEncoder();
+
+
+    const data =
+        encoder.encode(text);
+
+
+    const hashBuffer =
+        await crypto.subtle.digest(
+            "SHA-256",
+            data
+        );
+
+
+    const hashArray =
+        Array.from(
+            new Uint8Array(hashBuffer)
+        );
+
+
+    return hashArray
+        .map(
+            byte =>
+                byte
+                    .toString(16)
+                    .padStart(2, "0")
+        )
+        .join("");
+
+}
+
+
+
+/* =====================================
+   VERIFY ANSWER
+===================================== */
+
+async function submitAnswer() {
+
+    const wrongMessage =
+        document.getElementById(
+            "wrongMessage"
+        );
+
+
+    /*
+     * Exactly four selections are
+     * required.
+     */
+
+    if (selectedColors.size !== 4) {
+
+        wrongMessage.classList.add("show");
+
+        return;
+
+    }
+
+
+    /*
+     * Sort the selected values.
+     *
+     * This makes the clicking order
+     * irrelevant.
+     */
+
+    const canonicalSelection =
+        Array
+            .from(selectedColors)
+            .sort()
+            .join("|");
+
+
+    /*
+     * Calculate SHA-256.
+     */
+
+    const calculatedHash =
+        await sha256(
+            canonicalSelection
+        );
+
+
+    /*
+     * Compare with the stored hash.
+     *
+     * The four actual answers are
+     * not stored as a readable list.
+     */
+
+    if (
+        calculatedHash === verificationHash
+    ) {
+
+        showSuccess();
+
+    }
+
+    else {
+
+        wrongMessage.classList.add("show");
+
+    }
+
+}
+
+
+
+/* =====================================
+   INITIAL SCREEN
+===================================== */
+
+showEmail();
+
+</script>
+
+</body>
+</html>
