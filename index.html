@@ -35,11 +35,6 @@ body {
     overflow-x: hidden;
 }
 
-
-/* =====================================
-   BACKGROUND GRID
-===================================== */
-
 body::before {
     content: "";
     position: fixed;
@@ -62,9 +57,7 @@ body::before {
 }
 
 
-/* =====================================
-   SCREEN SYSTEM
-===================================== */
+/* SCREEN */
 
 .screen {
     display: none;
@@ -84,9 +77,7 @@ body::before {
 }
 
 
-/* =====================================
-   SCREEN 1 — EMAIL
-===================================== */
+/* EMAIL */
 
 .email-window {
     width: min(850px, 100%);
@@ -104,7 +95,6 @@ body::before {
         0 0 40px rgba(0,150,255,0.04);
 }
 
-
 .window-bar {
     height: 46px;
 
@@ -118,12 +108,10 @@ body::before {
     background: #0c1118;
 }
 
-
 .window-dots {
     display: flex;
     gap: 7px;
 }
-
 
 .window-dots span {
     width: 9px;
@@ -134,13 +122,11 @@ body::before {
     background: #3d4652;
 }
 
-
 .email-header {
     padding: 25px 30px 20px;
 
     border-bottom: 1px solid rgba(255,255,255,0.08);
 }
-
 
 .email-brand {
     display: flex;
@@ -151,10 +137,9 @@ body::before {
     margin-bottom: 22px;
 }
 
-
 .ms-logo {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
 
     display: grid;
 
@@ -164,23 +149,21 @@ body::before {
     gap: 2px;
 }
 
-
 .ms-logo span:nth-child(1) {
-    background: #f25022;
+    background: rgb(242,80,34);
 }
 
 .ms-logo span:nth-child(2) {
-    background: #7fba00;
+    background: rgb(127,186,0);
 }
 
 .ms-logo span:nth-child(3) {
-    background: #00a4ef;
+    background: rgb(0,164,239);
 }
 
 .ms-logo span:nth-child(4) {
-    background: #ffb900;
+    background: rgb(255,185,0);
 }
-
 
 .brand-name {
     font-size: 18px;
@@ -190,7 +173,6 @@ body::before {
     color: #f1f5fa;
 }
 
-
 .email-meta {
     font-size: 13px;
 
@@ -198,7 +180,6 @@ body::before {
 
     color: #9ba8b8;
 }
-
 
 .email-meta strong {
     color: #dbe5f0;
@@ -210,11 +191,9 @@ body::before {
     width: 65px;
 }
 
-
 .email-body {
     padding: 32px 30px 35px;
 }
-
 
 .email-body p {
     font-size: 15px;
@@ -225,7 +204,6 @@ body::before {
 
     margin-bottom: 18px;
 }
-
 
 .signin-box {
     margin: 24px 0;
@@ -239,7 +217,6 @@ body::before {
     border-radius: 8px;
 }
 
-
 .signin-title {
     font-size: 12px;
 
@@ -252,7 +229,6 @@ body::before {
     margin-bottom: 10px;
 }
 
-
 .signin-details {
     color: #cbd6e3;
 
@@ -260,7 +236,6 @@ body::before {
 
     line-height: 1.8;
 }
-
 
 .verify-button {
     border: none;
@@ -282,13 +257,11 @@ body::before {
     transition: 0.2s;
 }
 
-
 .verify-button:hover {
     background: #0b8be9;
 
     transform: translateY(-1px);
 }
-
 
 .email-signature {
     margin-top: 25px;
@@ -301,9 +274,7 @@ body::before {
 }
 
 
-/* =====================================
-   SCREEN 2 — COLOR PUZZLE
-===================================== */
+/* CHALLENGE */
 
 .challenge-card {
     width: min(900px, 100%);
@@ -320,7 +291,6 @@ body::before {
         0 30px 80px rgba(0,0,0,0.5);
 }
 
-
 .challenge-message {
     font-size: 20px;
 
@@ -333,7 +303,6 @@ body::before {
     margin-bottom: 35px;
 }
 
-
 .hex-grid {
     display: grid;
 
@@ -343,11 +312,6 @@ body::before {
 
     margin-bottom: 30px;
 }
-
-
-/* =====================================
-   COLOR BOX — UNSELECTED
-===================================== */
 
 .hex-box {
     padding: 16px 8px;
@@ -368,27 +332,16 @@ body::before {
 
     cursor: pointer;
 
-    transition:
-        background 0.15s ease,
-        border-color 0.15s ease,
-        color 0.15s ease,
-        box-shadow 0.15s ease,
-        transform 0.15s ease;
+    transition: 0.15s;
 
     user-select: none;
 }
-
 
 .hex-box:hover {
     border-color: rgba(0,170,255,0.6);
 
     background: #101923;
 }
-
-
-/* =====================================
-   COLOR BOX — SELECTED
-===================================== */
 
 .hex-box.selected {
     background: #00a4ef;
@@ -403,23 +356,6 @@ body::before {
     transform: translateY(-1px);
 }
 
-
-.hex-box.selected:hover {
-    background: #00a4ef;
-
-    border-color: #00a4ef;
-
-    color: #ffffff;
-
-    box-shadow:
-        0 0 20px rgba(0,164,239,0.55);
-}
-
-
-/* =====================================
-   BUTTONS
-===================================== */
-
 .action-row {
     display: flex;
 
@@ -429,7 +365,6 @@ body::before {
 
     flex-wrap: wrap;
 }
-
 
 .submit-button,
 .previous-button {
@@ -446,7 +381,6 @@ body::before {
     transition: 0.2s;
 }
 
-
 .submit-button {
     border: none;
 
@@ -455,11 +389,9 @@ body::before {
     color: #fff;
 }
 
-
 .submit-button:hover {
     background: #12a0fa;
 }
-
 
 .previous-button {
     border: 1px solid rgba(150,180,210,0.2);
@@ -469,17 +401,11 @@ body::before {
     color: #aebdcd;
 }
 
-
 .previous-button:hover {
     border-color: rgba(150,180,210,0.5);
 
     color: #fff;
 }
-
-
-/* =====================================
-   WRONG ANSWER
-===================================== */
 
 .wrong-message {
     display: none;
@@ -503,15 +429,12 @@ body::before {
     line-height: 1.5;
 }
 
-
 .wrong-message.show {
     display: block;
 }
 
 
-/* =====================================
-   SCREEN 3 — SUCCESS
-===================================== */
+/* SUCCESS */
 
 .success-card {
     width: min(700px,100%);
@@ -535,7 +458,6 @@ body::before {
     overflow: hidden;
 }
 
-
 .success-line {
     position: absolute;
 
@@ -551,7 +473,6 @@ body::before {
         0 0 20px #5dffad;
 }
 
-
 .success-icon {
     width: 58px;
     height: 58px;
@@ -565,6 +486,7 @@ body::before {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     color: #5dffad;
@@ -575,7 +497,6 @@ body::before {
         0 0 25px rgba(93,255,173,0.08);
 }
 
-
 .success-card h1 {
     font-size: 34px;
 
@@ -585,7 +506,6 @@ body::before {
 
     color: #f1f7ff;
 }
-
 
 .success-text {
     max-width: 520px;
@@ -598,7 +518,6 @@ body::before {
 
     font-size: 15px;
 }
-
 
 .clue-box {
     padding: 25px;
@@ -614,7 +533,6 @@ body::before {
     margin-bottom: 25px;
 }
 
-
 .clue-label {
     font-family: monospace;
 
@@ -626,7 +544,6 @@ body::before {
 
     margin-bottom: 12px;
 }
-
 
 .url-box {
     width: 100%;
@@ -650,14 +567,10 @@ body::before {
     word-break: break-all;
 
     user-select: text;
-
-    cursor: text;
 }
 
 
-/* =====================================
-   MOBILE
-===================================== */
+/* MOBILE */
 
 @media (max-width:700px) {
 
@@ -705,13 +618,10 @@ body::before {
 </style>
 </head>
 
-
 <body>
 
 
-<!-- =====================================
-     SCREEN 1 — SIMULATED EMAIL
-===================================== -->
+<!-- SCREEN 1 -->
 
 <section id="screen1" class="screen active">
 
@@ -720,11 +630,9 @@ body::before {
         <div class="window-bar">
 
             <div class="window-dots">
-
                 <span></span>
                 <span></span>
                 <span></span>
-
             </div>
 
         </div>
@@ -735,12 +643,10 @@ body::before {
             <div class="email-brand">
 
                 <div class="ms-logo">
-
                     <span></span>
                     <span></span>
                     <span></span>
                     <span></span>
-
                 </div>
 
                 <div class="brand-name">
@@ -812,7 +718,7 @@ body::before {
 
             <button
                 class="verify-button"
-                onclick="showClue()"
+                onclick="openChallenge()"
             >
                 Verify My Account
             </button>
@@ -833,9 +739,7 @@ body::before {
 
 
 
-<!-- =====================================
-     SCREEN 2 — COLOR PUZZLE
-===================================== -->
+<!-- SCREEN 2 -->
 
 <section id="screen2" class="screen">
 
@@ -844,6 +748,7 @@ body::before {
         <div class="challenge-message">
 
             Your next clue of Treasure Hunt is hidden in the email.<br>
+
             Read the email carefully and find the mistake.
 
         </div>
@@ -859,7 +764,7 @@ body::before {
 
             <button
                 class="submit-button"
-                onclick="submitAnswer()"
+                onclick="checkAnswer()"
             >
                 SUBMIT ANSWER
             </button>
@@ -867,7 +772,7 @@ body::before {
 
             <button
                 class="previous-button"
-                onclick="showEmail()"
+                onclick="openEmail()"
             >
                 ← Previous
             </button>
@@ -888,9 +793,7 @@ body::before {
 
 
 
-<!-- =====================================
-     SCREEN 3 — SUCCESS
-===================================== -->
+<!-- SCREEN 3 -->
 
 <section id="screen3" class="screen">
 
@@ -924,18 +827,17 @@ body::before {
             </div>
 
 
-            <div class="url-box">
-
-                https://youtu.be/ZI81LpIfMTk?si=_ZlFx9G6nEdGSSYx
-
-            </div>
+            <div
+                id="targetUrl"
+                class="url-box"
+            ></div>
 
         </div>
 
 
         <button
             class="previous-button"
-            onclick="showClue()"
+            onclick="openChallenge()"
         >
             ← Previous
         </button>
@@ -949,11 +851,9 @@ body::before {
 <script>
 
 
-/* =====================================
-   COLOR POOL
-===================================== */
+/* COLOR OPTIONS */
 
-const colorPool = [
+const colors = [
 
     "#F25022",
     "#7FBA00",
@@ -995,41 +895,30 @@ const colorPool = [
 ];
 
 
-/* =====================================
-   SHA-256 VERIFICATION HASH
-===================================== */
+/* ANSWER VERIFICATION */
 
-/*
-   The selected values are:
-
-   sorted alphabetically
-   ↓
-
-   #00A4EF
-   #7FBA00
-   #F25022
-   #FFB900
-
-   joined with "|"
-
-   The resulting SHA-256 hash is:
-
-   b525bb60476dc38e38804b1a9969ec67dc9af7a905a9942a6995a98eac8b4cef
-*/
-
-const verificationHash =
+const answerHash =
     "b525bb60476dc38e38804b1a9969ec67dc9af7a905a9942a6995a98eac8b4cef";
 
 
-let selectedColors = new Set();
+/* ENCODED NEXT CLUE */
+
+const clueParts = [
+
+    "aHR0cHM6Ly95b3V0dS5iZS9aSTgxTHBJZk1Uaz9zaT1fWmxG",
+    "eFg6RzZuRWRHU1NleA"
+
+];
+
+
+let selected =
+    new Set();
 
 
 
-/* =====================================
-   SCREEN CONTROL
-===================================== */
+/* SCREEN CONTROL */
 
-function hideAllScreens() {
+function showScreen(id) {
 
     document
         .querySelectorAll(".screen")
@@ -1039,55 +928,55 @@ function hideAllScreens() {
 
         });
 
-}
-
-
-function showEmail() {
-
-    hideAllScreens();
 
     document
-        .getElementById("screen1")
+        .getElementById(id)
         .classList.add("active");
 
 }
 
 
-function showClue() {
+function openEmail() {
 
-    hideAllScreens();
+    showScreen("screen1");
 
-    document
-        .getElementById("screen2")
-        .classList.add("active");
+}
 
-    createHexGrid();
+
+function openChallenge() {
+
+    showScreen("screen2");
+
+    createGrid();
 
 }
 
 
 function showSuccess() {
 
-    hideAllScreens();
+    const encoded =
+        clueParts.join("");
+
+    const url =
+        atob(encoded);
 
     document
-        .getElementById("screen3")
-        .classList.add("active");
+        .getElementById("targetUrl")
+        .textContent = url;
+
+
+    showScreen("screen3");
 
 }
 
 
 
-/* =====================================
-   SHUFFLE COLORS
-===================================== */
+/* SHUFFLE */
 
 function shuffle(array) {
 
-    const arr = [...array];
-
     for (
-        let i = arr.length - 1;
+        let i = array.length - 1;
         i > 0;
         i--
     ) {
@@ -1097,34 +986,36 @@ function shuffle(array) {
                 Math.random() * (i + 1)
             );
 
+
         [
-            arr[i],
-            arr[j]
+            array[i],
+            array[j]
         ] = [
-            arr[j],
-            arr[i]
+            array[j],
+            array[i]
         ];
 
     }
 
-    return arr;
+
+    return array;
 
 }
 
 
 
-/* =====================================
-   CREATE COLOR GRID
-===================================== */
+/* CREATE COLOR GRID */
 
-function createHexGrid() {
+function createGrid() {
 
     const grid =
         document.getElementById("hexGrid");
 
+
     grid.innerHTML = "";
 
-    selectedColors.clear();
+
+    selected.clear();
 
 
     document
@@ -1132,30 +1023,39 @@ function createHexGrid() {
         .classList.remove("show");
 
 
-    const shuffledColors =
-        shuffle(colorPool);
+    const shuffled =
+        shuffle([...colors]);
 
 
-    shuffledColors.forEach(color => {
+    shuffled.forEach(color => {
 
         const box =
-            document.createElement("div");
+            document.createElement("button");
 
 
-        box.className = "hex-box";
+        box.type = "button";
+
+        box.className =
+            "hex-box";
 
 
-        box.textContent = color;
+        box.textContent =
+            color;
 
 
-        box.dataset.color = color;
+        box.dataset.color =
+            color;
 
 
-        box.onclick = function() {
+        box.onclick =
+            function() {
 
-            selectBox(box, color);
+                toggleColor(
+                    box,
+                    color
+                );
 
-        };
+            };
 
 
         grid.appendChild(box);
@@ -1166,38 +1066,29 @@ function createHexGrid() {
 
 
 
-/* =====================================
-   SELECT / DESELECT
-===================================== */
+/* SELECT / DESELECT */
 
-function selectBox(box, color) {
+function toggleColor(box, color) {
 
-    if (selectedColors.has(color)) {
+    if (
+        selected.has(color)
+    ) {
 
-        /*
-         * Already selected:
-         * remove selection.
-         */
+        selected.delete(color);
 
-        selectedColors.delete(color);
-
-        box.classList.remove("selected");
+        box.classList.remove(
+            "selected"
+        );
 
     }
 
     else {
 
-        /*
-         * Not selected:
-         * add selection.
-         *
-         * There is intentionally
-         * NO selection limit.
-         */
+        selected.add(color);
 
-        selectedColors.add(color);
-
-        box.classList.add("selected");
+        box.classList.add(
+            "selected"
+        );
 
     }
 
@@ -1205,34 +1096,26 @@ function selectBox(box, color) {
 
 
 
-/* =====================================
-   SHA-256 FUNCTION
-===================================== */
+/* SHA-256 */
 
-async function sha256(text) {
-
-    const encoder =
-        new TextEncoder();
-
+async function sha256(value) {
 
     const data =
-        encoder.encode(text);
+        new TextEncoder()
+            .encode(value);
 
 
-    const hashBuffer =
+    const hash =
         await crypto.subtle.digest(
             "SHA-256",
             data
         );
 
 
-    const hashArray =
-        Array.from(
-            new Uint8Array(hashBuffer)
-        );
-
-
-    return hashArray
+    return Array
+        .from(
+            new Uint8Array(hash)
+        )
         .map(
             byte =>
                 byte
@@ -1245,65 +1128,42 @@ async function sha256(text) {
 
 
 
-/* =====================================
-   VERIFY ANSWER
-===================================== */
+/* CHECK ANSWER */
 
-async function submitAnswer() {
+async function checkAnswer() {
 
-    const wrongMessage =
+    const wrong =
         document.getElementById(
             "wrongMessage"
         );
 
 
-    /*
-     * Exactly four selections are
-     * required.
-     */
+    if (
+        selected.size !== 4
+    ) {
 
-    if (selectedColors.size !== 4) {
-
-        wrongMessage.classList.add("show");
+        wrong.classList.add(
+            "show"
+        );
 
         return;
 
     }
 
 
-    /*
-     * Sort the selected values.
-     *
-     * This makes the clicking order
-     * irrelevant.
-     */
-
-    const canonicalSelection =
+    const value =
         Array
-            .from(selectedColors)
+            .from(selected)
             .sort()
             .join("|");
 
 
-    /*
-     * Calculate SHA-256.
-     */
+    const hash =
+        await sha256(value);
 
-    const calculatedHash =
-        await sha256(
-            canonicalSelection
-        );
-
-
-    /*
-     * Compare with the stored hash.
-     *
-     * The four actual answers are
-     * not stored as a readable list.
-     */
 
     if (
-        calculatedHash === verificationHash
+        hash === answerHash
     ) {
 
         showSuccess();
@@ -1312,19 +1172,18 @@ async function submitAnswer() {
 
     else {
 
-        wrongMessage.classList.add("show");
+        wrong.classList.add(
+            "show"
+        );
 
     }
 
 }
 
 
+/* START */
 
-/* =====================================
-   INITIAL SCREEN
-===================================== */
-
-showEmail();
+openEmail();
 
 </script>
 
